@@ -25,7 +25,7 @@ function [  ] = singleTestFunction( videoFileName,AudioFloder,ImageFloder,videoF
     fnames=dircell(:,1);                % 文件在文件夹内的名字
     fnumber=size(fnames,1);             
     
-    rememberFrameIndex = 1;             % 记录帧写入的下标 初始为1
+    rememberFrameIndex = 1;             %    记录帧写入的下标 初始为1
     for i =1: fnumber                   % 循环读`取音频长度
          if i == 5
              fprintf('stop')
