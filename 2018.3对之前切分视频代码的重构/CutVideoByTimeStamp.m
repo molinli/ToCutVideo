@@ -1,19 +1,19 @@
 function [  ] = CutVideoByTimeStamp( VideoFloder,TextFloder )
 %CutVideoByTimeStamp 
-    % Author è«æ—ç«‹  2018.3.17
-    % å‚æ•°ä»‹ç»
-        % VideoFloder rawVideo æ‰€åœ¨æ–‡ä»¶å¤¹çš„ç»å¯¹è·¯å¾„
-        % TextFloder  æºå¸¦æœ‰åˆ‡åˆ†è§†é¢‘æ‰€éœ€çš„æ—¶é—´ä¿¡æ¯æ–‡æœ¬çš„æ ¹æ–‡ä»¶å¤¹çš„ç»å¯¹è·¯å¾„
-    % æ­¤å¤„æ˜¾ç¤ºæœ‰å…³æ­¤å‡½æ•°çš„æ‘˜è¦
-        % For: Video æ–‡ä»¶å¤¹ä¸‹çš„æ‰€æœ‰åŸå§‹è§†é¢‘æ–‡ä»¶video_1ï¼š
-        % 	video_1 æå–è§†é¢‘å¸§é€Ÿç‡
-        % 	video_1 åˆ‡åˆ†æˆå¸§å¹¶ä¿å­˜åˆ°Image æ–‡ä»¶å¤¹ç›¸åº”çš„å­æ–‡ä»¶å¤¹ä¸‹
-        % For: Text æ–‡ä»¶å¤¹ä¸‹åŒåï¼ˆvideo_1ï¼‰çš„å­æ–‡ä»¶å¤¹ï¼š
-        % 	video_1_001 çš„æ–‡ä»¶æå–çš„æ—¶é—´ä¿¡æ¯
-        % 	for æå–å‡ºæ¥çš„æ—¶é—´ä¿¡æ¯è®¡ç®—æ­¤æ—¶å¸§çš„å¼€å§‹å’Œç»“æŸä½ç½®
-        % 	deal with è¿™ä¸ªçŸ­è§†é¢‘
-        % 	save åˆ°CutVideo ç›®å½•ä¸‹ç›¸å¯¹åº”çš„å­æ–‡ä»¶å¤¹ï¼ˆvideo_1ï¼‰
-        % æœ€åæŠŠä¸­é—´ç”Ÿæˆçš„Image ç›®å½•åˆ é™¤
+    % Author ÄªÁÖÁ¢  2018.3.17
+    % ²ÎÊı½éÉÜ
+        % VideoFloder rawVideo ËùÔÚÎÄ¼ş¼ĞµÄ¾ø¶ÔÂ·¾¶
+        % TextFloder  Ğ¯´øÓĞÇĞ·ÖÊÓÆµËùĞèµÄÊ±¼äĞÅÏ¢ÎÄ±¾µÄ¸ùÎÄ¼ş¼ĞµÄ¾ø¶ÔÂ·¾¶
+    % ´Ë´¦ÏÔÊ¾ÓĞ¹Ø´Ëº¯ÊıµÄÕªÒª
+        % For: Video ÎÄ¼ş¼ĞÏÂµÄËùÓĞÔ­Ê¼ÊÓÆµÎÄ¼şvideo_1£º
+        % 	video_1 ÌáÈ¡ÊÓÆµÖ¡ËÙÂÊ
+        % 	video_1 ÇĞ·Ö³ÉÖ¡²¢±£´æµ½Image ÎÄ¼ş¼ĞÏàÓ¦µÄ×ÓÎÄ¼ş¼ĞÏÂ
+        % For: Text ÎÄ¼ş¼ĞÏÂÍ¬Ãû£¨video_1£©µÄ×ÓÎÄ¼ş¼Ğ£º
+        % 	video_1_001 µÄÎÄ¼şÌáÈ¡µÄÊ±¼äĞÅÏ¢
+        % 	for ÌáÈ¡³öÀ´µÄÊ±¼äĞÅÏ¢¼ÆËã´ËÊ±Ö¡µÄ¿ªÊ¼ºÍ½áÊøÎ»ÖÃ
+        % 	deal with Õâ¸ö¶ÌÊÓÆµ
+        % 	save µ½CutVideo Ä¿Â¼ÏÂÏà¶ÔÓ¦µÄ×ÓÎÄ¼ş¼Ğ£¨video_1£©
+        % ×îºó°ÑÖĞ¼äÉú³ÉµÄImage Ä¿Â¼É¾³ı
     ImageFloder = 'Image';
     if exist(ImageFloder,'dir')==0
         mkdir(ImageFloder)
@@ -32,23 +32,23 @@ function [  ] = CutVideoByTimeStamp( VideoFloder,TextFloder )
         t = class(fileName);
         video = VideoReader(strcat(VideoFloder,'\',fileName));
         
-        videoFrame = video.FrameRate;   % å¸§ä¿¡æ¯
+        videoFrame = video.FrameRate;   % Ö¡ĞÅÏ¢
 
         
-        for j = 1:video.numberofframes               
-             b = read(video,j) ;        % é¡ºåºè¯»å–å¸§
-             saveStr = strcat(ImageFloder,'\',fileName(1:end-4));   % è®¾ç½®ä¿å­˜çš„æ–‡ä»¶å¤¹åå­— Image\001_skin_w
-             if exist(saveStr,'dir') == 0   % è‹¥ç›®å½•ä¸å­˜åœ¨åˆ›å»º
+        for j = 1:video.numberofframes  % ÇĞ·ÖÊÓÆµÖ¡            
+             b = read(video,j) ;        % Ë³Ğò¶ÁÈ¡Ö¡
+             saveStr = strcat(ImageFloder,'\',fileName(1:end-4));   % ÉèÖÃ±£´æµÄÎÄ¼ş¼ĞÃû×Ö Image\001_skin_w
+             if exist(saveStr,'dir') == 0   % ÈôÄ¿Â¼²»´æÔÚ´´½¨
                  mkdir(saveStr)
              end
              framePicture = strcat(saveStr,'\',int2str(j),'.jpg');
-             imwrite(b,framePicture,'bmp');      % æŒ‡å®šè·¯å¾„å†™å…¥æ–‡ä»¶ matlab ä¸èƒ½åˆ›å»ºæ–‡ä»¶å¤¹ï¼Œå¦‚æœæ­¤å¤„æŠ¥é”™ï¼Œè¯·æ£€æŸ¥ä½ åœ¨ä»£ç ä¸­åˆ›å»ºäº†æ–‡ä»¶å¤¹  
-                                                 % ä¿å­˜å½¢å¼
+             imwrite(b,framePicture,'bmp');      % Ö¸¶¨Â·¾¶Ğ´ÈëÎÄ¼ş matlab ²»ÄÜ´´½¨ÎÄ¼ş¼Ğ£¬Èç¹û´Ë´¦±¨´í£¬Çë¼ì²éÄãÔÚ´úÂëÖĞ´´½¨ÁËÎÄ¼ş¼Ğ  
+                                                 % ±£´æĞÎÊ½
                                                  % Image\001_skin_w\i.jpg     
         end
         
         
-        textFile = dir(fullfile(strcat(TextFloder,'\',fileName(1:end-4))));       % éå†text å†…å¯¹åº”è§†é¢‘çš„å­æ–‡ä»¶å¤¹ä¸‹çš„æ–‡æœ¬æ–‡ä»¶ Text\001_skin_w
+        textFile = dir(fullfile(strcat(TextFloder,'\',fileName(1:end-4))));       % ±éÀútext ÄÚ¶ÔÓ¦ÊÓÆµµÄ×ÓÎÄ¼ş¼ĞÏÂµÄÎÄ±¾ÎÄ¼ş Text\001_skin_w
         
         textFileNum = size(textFile,1);
         
@@ -59,21 +59,21 @@ function [  ] = CutVideoByTimeStamp( VideoFloder,TextFloder )
              if (isequal(textFile(k).name,'..'))
                 continue;
              end
-             textFileName = textFile(k).name;       % æ–‡ä»¶åå­— 001_skin_w_006.txt
+             textFileName = textFile(k).name;       % ÎÄ¼şÃû×Ö 001_skin_w_006.txt
              path = strcat(TextFloder,'\',fileName(1:end-4),'\',textFileName);
-             fop = fopen(path,'rt');  % æ‰“å¼€txtæ–‡ä»¶
+             fop = fopen(path,'rt');  % ´ò¿ªtxtÎÄ¼ş
              while feof(fop) ~= 1
-                 line = fgetl(fop);     % è¯»å–æ–‡æœ¬ç¬¬ä¸€è¡Œ break
+                 line = fgetl(fop);     % ¶ÁÈ¡ÎÄ±¾µÚÒ»ĞĞ break
                  break;
              end
-             processStr = deblank(line);    % é™¤å»é¦–å°¾å¤šä½™ç©ºæ ¼
+             processStr = deblank(line);    % ³ıÈ¥Ê×Î²¶àÓà¿Õ¸ñ
              processStr = regexp(processStr, '\t', 'split');
              startTime =str2num( cell2mat( processStr(1)));
              endTime =str2num( cell2mat(processStr(2)));
              startFrame = round(startTime * videoFrame);
              endFrame = round(endTime * videoFrame);
              
-             writeFileFloder = strcat('CutVideo','\',fileName(1:end-4),'\');  % æ–‡æ¡£æ˜¯å¦å­˜åœ¨
+             writeFileFloder = strcat('CutVideo','\',fileName(1:end-4),'\');  % ÎÄµµÊÇ·ñ´æÔÚ
              if exist(writeFileFloder,'dir') == 0   
                 mkdir(writeFileFloder)
              end
@@ -86,7 +86,10 @@ function [  ] = CutVideoByTimeStamp( VideoFloder,TextFloder )
                 writeVideo(myObj,readFrame);        
              end         
              
-        end      
+        end  
+        
+        rmdir(strcat(ImageFloder,'\',fileName(1:end-4)),'s');   % ÇĞ·ÖÍê±Ïdelete ÊÓÆµÖ¡ÎÄ¼ş¼Ğ
+        
     end
-    fprintf('ç¨‹åºè¿è¡Œå®Œæ¯•ï¼');
+    fprintf('³ÌĞòÔËĞĞÍê±Ï£¡');
 end
