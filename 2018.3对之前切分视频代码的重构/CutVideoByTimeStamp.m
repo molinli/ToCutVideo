@@ -77,7 +77,7 @@ function [  ] = CutVideoByTimeStamp( VideoFloder,TextFloder )
              if exist(writeFileFloder,'dir') == 0   
                 mkdir(writeFileFloder)
              end
-             myObj = VideoWriter(strcat(writeFileFloder,'\',textFileName(1:end-4),'.mp4')); 
+             myObj = VideoWriter(strcat(writeFileFloder,'\',textFileName(1:end-4))); 
              myObj.FrameRate  = videoFrame;
              open(myObj); 
              for l = startFrame:endFrame
